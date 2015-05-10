@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的中心</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/style.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/libs/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript"  src="__PUBLIC__/Home/js/showInfo.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+	$(function(){
+		var reg = /User\/(.*?).html$/;
+		var str = document.URL;
+		reg.test(str);
+		$('.'+RegExp.$1).addClass("active");
+	});
+	</script>
+	<div class="wrapper">
+		<!-- header -->
+		<div class="header-wrapper">
+			<header class="header">
+				<div class="header-brand">
+					<a href="{:U('Index/index')}" class="logo"></a>
+				</div>
+				<div class="header-nav">
+					<div class="user-oper">
+						<if condition="$Think.session.is_login eq 1">
+							<div class="user-avatar">
+								<img src="__PUBLIC__/Home/images/user-avatar.jpg" alt="">
+							</div>
+							<div class="user-info">
+								<a  class="item" href="{:U('User/orders')}" title="个人中心">
+									<empty name="Think.session.name">
+										<empty name="Think.session.phone">
+											佚名
+										</empty>
+										{$Think.session.phone}
+										<else /> 
+										{$Think.session.name}
+									</empty>
+								</a>
+								<a  class="item" href="{:U('Login/logoff')}">注销</a>
+							</div>
+						<else />
+							<a href="{:U('Login/login')}" class="user-oper-item login">登录</a>
+							<a href="{:U('Login/reg')}" class="user-oper-item register">注册</a> 
+						</if>
+					</div>
+					<div class="search-oper">
+						<form action="{:U('Search/index')}" class="search-form" method="post" enctype="application/x-www-form-urlencoded">
+							<input type="text" class="input" name="keywords" />
+							<input type="submit" class="search" value="Search" />
+						</form>
+					</div>
+				</div>
+			</header>
+		</div>
+
+		<!-- main -->
+		<div class="main-wrapper self-wrapper">
+			<div class="main">
+				<div class="container clearfix">
+					<div class="side-nav left">
+						<div class="nav-head">
+							<a href="#"  class="user-avatar"><img src="__PUBLIC__/Home/images/user-avatar.jpg" alt=""></a>
+							<a href="#" class="user-name">{$Think.session.name}</a>
+						</div>
+						<div class="nav-list">
+							<ul>
+								<li  class="item orders"><a href="{:U('User/orders')}">我的订单</a></li>
+								<li  class="item favorites"><a href="{:U('User/favorites')}">我的收藏</a></li>
+								<li  class="item wallet"><a href="{:U('User/wallet')}">我的钱包</a></li>
+								<!--<li  class="item card"><a href="{:U('User/card')}">我的会员卡</a></li>-->
+								<li  class="item settings"><a href="{:U('User/settings')}">账户设置</a></li>
+								<li  class="item feedback"><a href="{:U('User/feedback')}">意见反馈</a></li>
+							</ul>
+						</div>
+					</div>
+					<block name="content"></block>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- footer -->
+		<div class="footer-wrapper">
+			<footer class="footer">
+				<p class="info-item site-info">
+					<a href="#" class="item email">dingchangzi@gmail.com</a>
+					<a href="#" class="item mobile">151-1698-3618</a>
+					<a href="#" class="item iphone">iPhone版下载</a>
+					<a href="#"	class="item android">安卓版下载</a>
+				</p>
+				<p class="info-item comp-info">
+					<a href="#">关于我们</a>
+					<a href="#">联系我们</a>
+					<a href="#">加入我们</a>
+				</p>
+			</footer>
+			<div class="copy-right">
+				<p>主题备案号：京ICP备11046296号 网站备案号：京ICP备11046296号-2</p>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

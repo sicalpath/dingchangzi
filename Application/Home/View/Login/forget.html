@@ -1,0 +1,33 @@
+<extend name="base" />
+<block name="title"><title>找回密码</title></block>
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper  register-wrapper">
+			<div class="main">
+				<div class="container">
+					<section class="register-bar"  style="width:258px;height:350px;">
+						<form action="#" class="dcz-form register-form left" method="post">
+							<h3  class="form-title">找回密码</h3>
+							<div class="form-group">
+								<input type="text" class="form-control" id="phone" placeholder="输入注册手机号" name="phone">
+							</div>
+							<div class="form-group">
+								<a href="javascript:void(0)" class="dcz-btn btn-primary btn-md get-code left send">获取验证码</a>
+								<input type="text" class="form-control input-addon right" placeholder="输入验证码"  name="code">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="输入密码" name="password">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="确认新密码" name="password">
+							</div>
+							<div class="form-group">
+								<input type="button" class="dcz-btn btn-primary btn-md" value="确认" onclick="window.location='{:U('Index/index')}';">
+							</div>
+						</form>
+						
+					</section>
+				</div>
+			</div>
+		</div>
+</block>

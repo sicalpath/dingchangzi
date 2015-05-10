@@ -1,0 +1,131 @@
+<extend name="Public:base" />
+	<block name="title"><title>首页</title></block>
+	<block name="files">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/style.css">
+		<!-- <script type="text/javascript" src="__PUBLIC__/Home/js/plugins/html5shiv.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/selectivizr-min.js"></script> -->
+		<!-- 以上两个js文件是用于支持 IE低版本浏览器html5元素以及css3选择器的，单貌似不生效 请后期有条件时测试 -->
+		<script type="text/javascript" src="__PUBLIC__/Home/js/libs/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript"  src="__PUBLIC__/Home/js/showInfo.js"></script>
+		<script type="text/javascript"  src="__PUBLIC__/Home/js/plugins/jquery.jslides.js"></script>
+	</block>
+		<!-- main -->
+		<block name="content">
+			<div class="main-wrapper index-wrapper">
+			<div class="main">
+				<!-- banner -->
+				<section class="banner clearfix">
+					<div id="full-screen-slider">
+						<ul id="slides">
+							<li style="z-index: 800; display: block; background: url('__PUBLIC__/Home/images/01.jpg') 50% 0% no-repeat;"><a href="#" target="_blank">智能网站管理系统</a></li>
+							<li style="z-index: 900; display: none; background: url('__PUBLIC__/Home/images/02.jpg') 50% 0% no-repeat;"><a href="#" target="_blank">仙人掌软件</a></li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- nav -->
+				<section class="main-nav clearfix">
+					<nav class="nav">
+						<ul>
+							<li  class="nav-item"><a href="{:U('Site/index','stype=1')}">
+								<span class="dcz-icon icon-badminton-lg filter"></span>
+								<p class="text">羽毛球</p>
+							</a></li>
+							<li  class="nav-item"><a href="{:U('Site/index','stype=2')}">
+								<span class="dcz-icon icon-football-lg filter"></span>
+								<p class="text">足球</p>
+							</a></li>
+							<!--<li  class="nav-item hover"><a href="{:U('Site/index','stype=2')}">
+								<span class="dcz-icon icon-football-lg filter"></span>
+								<p class="text">足球</p>
+							</a></li>-->
+							<li  class="nav-item"><a href="{:U('Site/index','stype=3')}">
+								<span class="dcz-icon icon-tennis-lg filter"></span>
+								<p class="text">网球</p>
+							</a></li>
+							<li  class="nav-item"><a href="{:U('Site/index','stype=4')}">
+								<span class="dcz-icon icon-basketball-lg filter"></span>
+								<p class="text">篮球</p>
+							</a></li>
+							<li  class="nav-item"><a href="{:U('Site/index','stype=5')}">
+								<span class="dcz-icon icon-pingpang-lg filter"></span>
+								<p class="text">乒乓球</p>
+							</a></li>
+						</ul>
+					</nav>
+				</section>
+
+				<!-- 推荐场馆 -->
+				<section class="container">
+					<header class="title">
+						<hr  class="title-line">
+						<h1  class="title-text">推荐场馆</h1>
+					</header>
+					<div class="content">
+						<ul class="content-list clearfix">
+							<volist id="stadium" name="stadiums">
+								<li class="content-item">
+									<article>
+										<div class="item-oper">
+											<i class="dcz-icon icon-star-empty"></i>
+										</div>
+										<a href="
+										<empty name="stadium['url']">
+											{:U('Site/detail','stid='.$stadium['stid'])}
+											<else />
+											 http://{$stadium['url']}
+											</empty>
+										" class="item-img"><img src="__PUBLIC__/Home/images/content-item-1.jpg" alt=""></a>
+										<div class="item-title">
+											<h3><a href="<empty name="stadium['url']">
+											{:U('Site/detail','stid='.$stadium['stid'])}
+											<else />
+											 http://{$stadium['url']}
+											</empty>">{$stadium['name']}</a></h3>
+											<span><!--<em  class="big"></em>--><em  class="small">{$stadium['totstar']/$stadium['totvoter']|substr=0,3}</em></span>
+										</div>
+										<div class="item-info">
+											<p  class="sports">
+												<i class="dcz-icon icon-basketball"></i><span>篮球</span>
+												<i class="dcz-icon icon-badminton"></i><span>羽毛球</span>
+												<i class="dcz-icon icon-pingpang"></i><span>乒乓球</span>
+												<i class="dcz-icon icon-basketball"></i><span>篮球</span>
+												<i class="dcz-icon icon-badminton"></i><span>羽毛球</span>
+												<i class="dcz-icon icon-pingpang"></i><span>乒乓球</span>
+											</p>
+											<p  class="location">
+												<i class="dcz-icon icon-location"></i>
+												<span>{$stadium['address']}</span>
+											</p>
+											<p  class="other">
+												<i class="dcz-icon icon-parking"></i><span>停车</span>
+												<i class="dcz-icon icon-cart"></i><span>购物</span>
+												<i class="dcz-icon icon-clean"></i><span>洗浴</span>
+											</p>
+										</div>
+									</article>
+								</li>
+							</volist>
+						</ul>
+						<div class="content-oper">
+							<a href="{:U('Site/index')}" class="dcz-btn  btn-lg btn-primary">查看全部场馆</a>
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</block>
+<block name="script"><script type="text/javascript">
+	/*$(function(){
+		$('.filter').mouseover(function(){
+			$(this).css('filter','hue-rotate(60deg)');
+		})
+		$('.filter').mouseleave(function(){
+			$(this).css('filter','hue-rotate(0deg)');
+		})
+		
+	})*/
+</script>
+</block>

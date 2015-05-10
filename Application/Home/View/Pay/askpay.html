@@ -1,0 +1,131 @@
+<extend name="Public:base" />
+	<block name="title"><title>确定支付</title></block>
+	<block name="files">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/style.css">
+		<!-- <script type="text/javascript" src="__PUBLIC__/Home/js/plugins/html5shiv.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/selectivizr-min.js"></script> -->
+		<!-- 以上两个js文件是用于支持 IE低版本浏览器html5元素以及css3选择器的，单貌似不生效 请后期有条件时测试 -->
+		<script type="text/javascript" src="__PUBLIC__/Home/js/libs/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript"  src="__PUBLIC__/Home/js/showInfo.js"></script>
+		<script type="text/javascript">
+		//倒计时
+		function countDown(){
+				var orderTime = "{$order['ordertime']}";
+				date = orderTime.split(" ")[0].split("-");
+				time = orderTime.split(" ")[1].split(":");//月份是实际月份-1
+				start_time = new Date(date[0], parseInt(date[1])-1, date[2], time[0], time[1], time[2]).getTime();
+				sys_second = (start_time - new Date().getTime() )/1000 + 900;
+				console.log(sys_second);
+				if(sys_second > 900){
+					$('#min').text(15);
+					$('#sec').text(0);
+				}
+				else{
+					var timer = setInterval(function(){
+						if (sys_second > 0) {
+							sys_second -= 1;
+							var minute = Math.floor((sys_second / 60) % 60);
+							var second = Math.floor(sys_second % 60);
+							$('#min').text(minute<10?"0"+minute:minute);//计算分
+							$('#sec').text(second<10?"0"+second:second);// 计算秒
+						} else { 
+							clearInterval(timer);
+						}
+					}, 1000);
+				}
+			}
+			$(function(){
+				setTimeout("countDown()",2000);			//时间有些误差 延迟一秒执行
+			});
+		</script>
+	</block>
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper pay-wrapper">
+			<div class="main">
+				<!-- 订单步骤导航 -->
+				<section  class="bread-nav clearfix">
+					<ul>
+						<li class="nav-item">
+							<span class="step-number">1</span>
+							<span class="step-text">选择场馆</span>
+						</li>
+						<li class="nav-item">
+							<span class="step-number">2</span>
+							<span class="step-text">选择场次</span>
+						</li>
+						<li class="nav-item step-on">
+							<span class="step-number">3</span>
+							<span class="step-text">确认支付</span>
+						</li>
+						<li class="nav-item">
+							<span class="step-number">4</span>
+							<span class="step-text last-text">预定成功</span>
+						</li>
+					</ul>
+				</section>
+				
+				<!-- 订单信息 -->
+				<section class="order-info">
+					<div class="info-title clearfix">
+						<i class="dcz-icon icon-shalou left"></i>
+						<p class="text left">请在15分钟内完成付款，超时系统将自动释放已选场次，在支付过程中如遇到问题请致电：4000-406-506<br/>剩余支付时间<time  class="remain-time"><span id="min">15</span>分<span id="sec">00</span>秒</time></p>
+					</div>
+					<div class="info-body clearfix">
+						<div class="info-body-lt left clearfix">
+							<dl  class="info-item">
+								<dt>订单号:</dt>
+								<dd>{$order['oid']}</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>预定场地:</dt>
+								<dd id="siteInfo">{$order['fsids']}</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>预定日期:</dt>
+								<dd>{$order['usetimes']}</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>接收短信手机:</dt>
+								<dd>{$order['phone']}</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>应付金额:</dt>
+								<dd>{$order['price']}</dd>
+							</dl>
+						</div>
+						<div class="info-body-rt left clearfix">
+							<dl  class="info-item">
+								<dt>预定场馆:</dt>
+								<dd>{$stadium['name']}</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>详细地址:</dt>
+								<dd>{$stadium['address']}</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>公交信息:</dt>
+								<dd>{$stadium['address2']}</dd>
+							</dl>
+						</div>
+					</div>
+				</section>
+
+				<div class="container"  style="padding-top:40px;">
+					<a href="{:U('Pay/alipay','oid='.$order['oid'])}" class="dcz-btn btn-lg btn-primary">确认支付</a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var html = "";
+			var siteInfo = {$order['fsids']};
+			/*$(siteInfo).each(function(index){
+				html += siteInfo[index].split(":")[0] +"号场地 " + (parseInt(siteInfo[index].split(":")[1])+8)+" :00-";
+				html += (parseInt(siteInfo[index].split(":")[1])+9) + ":00 <br />" ;
+			})*/
+			html += siteInfo[0].split(":")[0] +"号场地 " + ((parseInt(siteInfo[0].split(":")[1])%14)+8)+" :00-";
+			html += ((parseInt(siteInfo[0].split(":")[1])%14)+9) + ":00 ...<br />" ;
+			$('#siteInfo').html(html);
+			
+		</script>
+</block>

@@ -1,0 +1,474 @@
+<extend name="Public:base2" />
+	<block name="title"><title>场馆详情</title></block>
+	<block name="files">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/style.css?_t={$Think.config.NOWTIME}">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/dropdownlist.venuesdetail.css">
+		<script type="text/javascript" src="__PUBLIC__/Home/js/libs/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/dropdownlist.venuesdetail.js"></script>
+		<!-- <script type="text/javascript" src="__PUBLIC__/Home/js/plugins/html5shiv.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/selectivizr-min.js"></script> -->
+		<!-- 以上两个js文件是用于支持 IE低版本浏览器html5元素以及css3选择器的，单貌似不生效 请后期有条件时测试 -->
+		<script type="text/javascript"  src="__PUBLIC__/Home/js/showInfo.js"></script>
+		<script type="text/javascript"  src="__PUBLIC__/Home/js/bind.js"></script>
+		<script>		$(function(){
+			var url = "{:U('Site/detail','stid='.$stid)}";
+			setSportsType({$stype['stype']},url);
+		})</script>
+	</block>
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper">
+			<div class="main">
+
+				<!-- 场馆基本信息 -->
+				<div  class="venues-base-info">
+					<div class="container clearfix">
+						<div class="base-info left">
+							<div class="venues-info-item clearfix">
+								<h2 class="venues-name left">{$stadium['name']}</h2>
+								<div class="venues-stars left">
+									<i class="dcz-icon icon-star-full"></i>
+									<i class="dcz-icon icon-star-full"></i>
+									<i class="dcz-icon icon-star-full"></i>
+									<i class="dcz-icon icon-star-full"></i>
+									<i class="dcz-icon icon-star-empty"></i>
+									<span><em class="big">10</em><em  class="small">.0</em></span>
+								</div>
+								<div class="venues-oper right">
+									<a href="javascript:collect({$stid});"  class="oper-item" style="border-right:1px solid rgba(255,255,255,0.6);"><i class="dcz-icon icon-collect"></i>收藏</a>
+									<a href="#"  class="oper-item"><i class="dcz-icon icon-share"></i>分享</a>
+								</div>
+							</div>
+							<div class="venues-info-item  clearfix">
+								<div class="venues-more venues-location left">
+									<i class="dcz-icon icon-location-white"></i>
+									<span  class="text">{$stadium['address']}</span>
+								</div>
+								<div class="venues-more venuse-bus left">
+									<i class="dcz-icon icon-bus-white"></i>
+									<span  class="text">{$stadium['address2']}</span>
+								</div>
+							</div>
+							<div class="venues-info-item  clearfix">
+								<div class="venues-more venues-sports left">
+									<!--<i class="dcz-icon icon-basketball-white"></i>
+									<span  class="text"><a href="#" style="text-decoration:none;color:white;">篮球</a></span>
+									<i class="dcz-icon icon-badminton-white"></i>
+									<span  class="text"><a href="#" style="text-decoration:none;color:white;">羽毛球</a></span>
+									<i class="dcz-icon icon-pingpang-white"></i>
+									<span  class="text"><a href="#" style="text-decoration:none;color:white;">乒乓球</a></span>-->
+								</div>
+								<div class="venues-more venues-other left">
+									<i class="dcz-icon icon-parking-white"></i>
+									<span  class="text">停车</span>
+									<i class="dcz-icon icon-cart-white"></i>
+									<span  class="text">购物</span>
+									<i class="dcz-icon icon-clean-white"></i>
+									<span  class="text">洗浴</span>
+								</div>
+							</div>
+						</div>
+						<aside  class="venues-photo right">
+							<div class="photo-album">
+								<img src="__PUBLIC__/Home/images/content-item-1.jpg" alt="#">
+								<div class="photo-count"><i class="dcz-icon icon-img"></i>263</div>
+								<div class="photo-upload">
+									<i class="dcz-icon icon-upload"></i>
+								</div>
+							</div>
+						</aside>
+					</div>
+				</div>
+
+				<!-- 场馆场地信息 -->
+				<div  class="venues-site-info">
+					<div class="loading" style="position:absolute; left:-1px; top:1px; width:100%; height:200%; background-color:#FFFFFF; z-index:1000;opacity:0.8;">
+						<div style="margin:30% 50%;">
+							<img src="__PUBLIC__/Home/images/loading.gif" />
+						</div>
+					</div>
+					<div class="container">
+						<!-- 运动选择 -->
+						<div class="venues-sport-choose  clearfix">
+							<div class="select-container left">
+								<div id="selectSportArea"></div>
+							</div>
+							<div class="info-container left">
+								<ul class="info-list">
+									<li class="info-item">
+										<span class="info-key">地板材料</span>
+										<span class="info-value">木质地板</span>
+									</li>
+									<li class="info-item">
+										<span class="info-key">场地位置</span>
+										<span class="info-value">室内</span>
+									</li>
+									<li class="info-item">
+										<span class="info-key">场地数量</span>
+										<span class="info-value">5片</span>
+									</li>
+									<li class="info-item">
+										<span class="info-key">挑高</span>
+										<span class="info-value">10米</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- 时间选择 -->
+						<div class="venues-time-choose clearfix">
+							<ul class="venues-time-table clearfix">
+								<li class="time-item time-item-1 active" id="2015/01/27">
+									<div href="#">
+									<dl>
+										<dt>今天</dt>
+										<dd>
+											<i>余</i>
+											<span>12</span>
+										</dd>
+									</dl>
+									</div>
+								</li>
+								<li class="time-item time-item-2" id="2015/01/28">
+									<div href="#">
+									<dl>
+										<dt></dt>
+										<dd>
+											<i>余</i>
+											<span>12</span>
+										</dd>
+									</dl>
+									</div>
+								</li>
+								<li class="time-item time-item-3" id="2015/01/29">
+									<div href="#">
+									<dl>
+										<dt></dt>
+										<dd>
+											<i>余</i>
+											<span>12</span>
+										</dd>
+									</dl>
+									</div>
+								</li>
+								<li class="time-item time-item-4" id="2015/01/30">
+									<div href="#">
+									<dl>
+										<dt></dt>
+										<dd>
+											<i>余</i>
+											<span>12</span>
+										</dd>
+									</dl>
+									</div>
+								</li>
+								<li class="time-item time-item-5" id="2015/01/31">
+									<div href="#">
+									<dl>
+										<dt></dt>
+										<dd>
+											<i>余</i>
+											<span>12</span>
+										</dd>
+									</dl>
+									</div>
+								</li>
+								<li class="time-item time-item-6" id="2015/02/01"> 
+									<div href="#">
+									<dl>
+										<dt></dt>
+										<dd>
+											<i>余</i>
+											<span>12</span>
+										</dd>
+									</dl>
+									</div>
+								</li>
+								<li class="time-item time-item-7" id="2015/02/02">
+									<div href="#">
+									<dl>
+										<dt></dt>
+										<dd>
+											<i>余</i>
+											<span>12</span>
+										</dd>
+									</dl>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- 场地选择 -->
+						<div class="venues-site-choose clearfix">
+							<div class="site-table left">
+								<ul class="site-status clearfix">
+									<li class="status-item"><i id="selected" class="dcz-icon icon-badminton-yellow"></i><span class="text color-yellow">已选定</span></li>
+									<!--<li class="status-item"><i class="dcz-icon icon-badminton-blue"></i><span class="text color-blue">仅学生</span></li>-->
+									<li  class="status-item"><i id="selled" class="dcz-icon icon-badminton-gray"></i><span class="text color-gray">不可预订</span></li>
+									<li  class="status-item"><i  id="availiable" class="dcz-icon icon-badminton-green"></i><span class="text color-green">可预订</span></li>
+								</ul>
+								<ul class="site-table-title clearfix">
+									<li>&nbsp;8:00</li>
+									<li>&nbsp;9:00</li>
+									<li>10:00</li>
+									<li>11:00</li>
+									<li>12:00</li>
+									<li>13:00</li>
+									<li>14:00</li>
+									<li>15:00</li>
+									<li>16:00</li>
+									<li>17:00</li>
+									<li>18:00</li>
+									<li>19:00</li>
+									<li>20:00</li>
+									<li>21:00</li>
+									<li>22:00</li>
+								</ul>
+								<table  class="table sites">
+									<!--<tr>
+										<td  style="width:79px" class="field" sort="1" fid="1">1号场地</td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="1"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="2"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="3"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="4"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="5"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="6"></i></td>
+										<td><i class="dcz-icon icon-badminton-yellow ftime" ftime="7"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="8"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="9"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="10"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="11"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="12"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="13"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="14"></i></td>
+									</tr>
+									<tr>
+										<td  style="width:79px" class="field" sort="2" fid="2">2号场地</td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="1"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="2"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="3"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="4"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="5"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="6"></i></td>
+										<td><i class="dcz-icon icon-badminton-yellow ftime" ftime="7"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="8"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="9"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="10"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="11"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="12"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="13"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="14"></i></td>
+									</tr>
+									<tr>
+										<td  style="width:79px" class="field" fid="3">3号场地</td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="1"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="2"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="3"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="4"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="5"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="6"></i></td>
+										<td><i class="dcz-icon icon-badminton-yellow ftime" ftime="7"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="8"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="9"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="10"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="11"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="12"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="13"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="14"></i></td>
+									</tr>
+									<tr>
+										<td  style="width:79px" class="field" fid="4">4号场地</td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="1"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="2"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="3"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="4"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="5"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="6"></i></td>
+										<td><i class="dcz-icon icon-badminton-yellow ftime" ftime="7"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="8"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="9"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="10"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="11"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="12"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="13"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="14"></i></td>
+									</tr>
+									<tr>
+										<td  style="width:79px" class="field" fid="5">5号场地</td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="1"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="2"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="3"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="4"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="5"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="6"></i></td>
+										<td><i class="dcz-icon icon-badminton-yellow ftime" ftime="7"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="8"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="9"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="10"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="11"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="12"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="13"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="14"></i></td>
+									</tr>
+									<tr>
+										<td  style="width:79px" class="field" fid="6">6号场地</td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="1"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="2"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="3"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="4"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="5"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="6"></i></td>
+										<td><i class="dcz-icon icon-badminton-yellow ftime" ftime="7"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="8"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="9"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="10"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="11"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="12"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="13"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="14"></i></td>
+									</tr>
+									<tr>
+										<td  style="width:79px" class="field" fid="7">7号场地</td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="1"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="2"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="3"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="4"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="5"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="6"></i></td>
+										<td><i class="dcz-icon icon-badminton-yellow ftime" ftime="7"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="8"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="9"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="10"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="11"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="12"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="13"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="14"></i></td>
+									</tr>
+									<tr>
+										<td  style="width:79px" class="field" fid="8">8号场地</td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="1"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="2"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="3"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="4"></i></td>
+										<td><i class="dcz-icon icon-badminton-green ftime" ftime="5"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="6"></i></td>
+										<td><i class="dcz-icon icon-badminton-yellow ftime" ftime="7"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="8"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="9"></i></td>
+										<td><i class="dcz-icon icon-badminton-blue ftime" ftime="10"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="11"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="12"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="13"></i></td>
+										<td><i class="dcz-icon icon-badminton-gray ftime" ftime="14"></i></td>
+									</tr>-->
+								</table>
+							</div>
+							<div class="site-side right">
+								<form action="{:U('Pay/askpay')}" method="post" class="book">
+									<input id="date" type="hidden" name="date" value="" />
+								<div class="side-bar">
+									<div  class="side-bar-group">
+													<h3  class="side-bar-label">已选择<num id="totalField">0</num>个场地</h3>
+												</div>
+												<div  class="side-bar-group">
+													<span  class="side-bar-label">场次</span>
+													<div  class="side-bar-input orders">
+		
+													</div>
+												</div>
+												<div  class="side-bar-group">
+													<span  class="side-bar-label">总计</span>
+													<p  class="side-bar-input">￥<em class="money-count">0</em></p>
+												</div>
+								</div>
+								<hr  class="side-hr">
+								<div class="side-bar">
+									
+										<div  class="side-bar-group">
+											<h3  class="side-bar-label">输入接收短信的手机号码</h3>
+										</div>
+										<div  class="side-bar-group">
+											<input  class="side-bar-input input" placeholder="手机号" name="phone" value="{$Think.session.phone}" />
+											<input  class="side-bar-input input" type="hidden" name="name" value="{$Think.session.name}" />
+										</div>
+										<div  class="side-bar-group">
+											<input  class="side-bar-input input input-addon" placeholder="验证码" name="checkcode">
+											<img src="{:U('Pay/verify')}" id="checkcode"  alt="" class="check-code">
+										</div>
+										<div  class="side-bar-group">
+											<input type="hidden" value="{$stid}" type="text" name="stid" />
+											<input id="usetime" type="hidden" value="" type="text" name="usetime" />
+											<input type="submit" value="提交订单" onclick="return checkphone();" class="dcz-btn btn-default btn-lg submit">
+										</div>
+									
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+</block>
+<block name="script">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/Home/function.js?_t={$Think.config.NOWTIME}"></script>
+	<script type="text/javascript">
+			$(function(){
+			var d, s = "";
+			d = new Date();
+			d.setDate(d.getDate()-1);
+			var x = new Array("星期日", "星期一", "星期二","星期三","星期四", "星期五","星期六");				
+			var obj = $('.venues-time-table.clearfix').children('li');
+			var showObj = $('.venues-time-table.clearfix').find('dt');
+			obj.each(function(index){				
+				d.setDate(d.getDate()+1);
+				s = d.getFullYear()+"/"+(d.getMonth() + 1)+"/"+d.getDate();
+				if(index==0){
+					$(obj[index]).find('dt').html('今天');
+					$('#usetime').val(s);
+				}
+				else
+					$(obj[index]).find('dt').html(x[d.getDay()]+" "+(d.getMonth() + 1)+"/"+d.getDate());
+				week = x[d.getDay()];
+				obj[index].setAttribute('id',s);
+			})
+			showObj.each(function(index){
+				//
+			})
+			
+		})
+		$(function(){
+			var scores = '{$stadium['totstar']/$stadium['totvoter']|substr=0,3}.0';
+			var sc = scores.split(".");
+			$('em.big').html(sc[0]);
+			$('em.small').html('.'+sc[1]);
+			$('.time-item').children("div")[0].click();
+			$('.loading').hide();
+		})
+		$('#checkcode').click(function(){
+			freshVerify();
+		});
+		function checkphone(){
+			$.ajaxSettings.async = false;
+    		$.get("{:U('Pay/index')}",function(data){
+    			switch(data){
+    				case "0":
+    					window.location="{:U('Login/login')}";
+    					s=false;
+    					break;
+    				case "1":
+    					player();
+    					s=false;
+    					break;
+    				default:
+    					s=true;
+    			}
+    		})
+    		return s;
+		}
+		function freshVerify(){
+			var time = new Date();
+			$('#checkcode').attr("src","{:U('Pay/verify')}?_t="+ time.getTime());
+		}
+
+	</script>
+</block>

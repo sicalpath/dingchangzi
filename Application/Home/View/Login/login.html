@@ -1,0 +1,62 @@
+<extend name="base" />
+<block name="title"><title>登录</title></block>
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper  register-wrapper">
+			<div class="main">
+				<div class="container">
+					<section class="login-bar">
+						<div class="dcz-form login-form">
+							<div class="user-avatar">
+								<img src="__PUBLIC__/Home/images/user-avatar.jpg">
+							</div>
+							<div class="form-group">
+								<input type="hidden" name="reurl" value="{$reurl}" />
+								<input type="text" class="form-control" placeholder="输入手机号" name="phone" id="phone" />
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="输入登录密码" name="password" id="password" />
+							</div>
+							<!--<div class="form-group">
+								<input type="text" class="form-control input-addon left" placeholder="输入验证码" name="verify" id="verify" />
+								<img src="__PUBLIC__/Home/icons/check-code.png" alt="" class="check-code">
+							</div>-->
+							<div class="form-group">
+								<input type="checkbox" class="checkbox"  name="remmber" id="remmber" />
+								<label  for="remmber">记住密码</label>
+								<a href="{:U('Login/forget')}"  class="form-link">忘记密码？</a>
+							</div>
+							<div class="form-group">
+								<input type="button" class="dcz-btn btn-primary btn-md" value="登录" onclick="login('{$Think.server.HTTP_REFERER}');">
+							</div>
+							<div class="form-group">
+								<input type="button" class="dcz-btn btn-warning btn-md" value="注册" onclick="window.location='{:U('Login/reg')}';">
+							</div>
+						</div>
+						<div class="login-tips">
+							<div class="tips-title">
+								<h3>其他账号登录</h3>
+							</div>
+							<div class="tips-body">
+								<a href="http://tju.dingchangzi.net/index.php/Login/eduLogin.html" class="tips-item"><i class="dcz-icon icon-user"></i></a>
+								<!--<a href="#" class="tips-item"><i class="dcz-icon icon-weibo"></i></a>-->
+								<a href="{:U('Oauth/index?type=qq')}" class="tips-item"><i class="dcz-icon icon-qq"></i></a>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+		 <script>
+
+			$(document).ready(function(){
+				$(".login-form").keydown(function(e)
+					{
+						var curKey = e.which;
+						if(curKey == 13){
+							login('{$Think.server.HTTP_REFERER}');
+						}
+					});
+			});
+</script>
+</block>

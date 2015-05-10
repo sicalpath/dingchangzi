@@ -1,0 +1,94 @@
+<extend name="base" />
+<block name="content">
+<div class="content self-content right">
+						<div  class="content-head">
+							<h3  class="title">我的订单</h3>
+						</div>
+						<div class="content-body myorder-body">
+							<div class="myorder-table">
+								<div class="table-th  clearfix">
+									<ul>
+										<li class="th myorder-info">订单信息</li>
+										<li class="th myorder-count">数量</li>
+										<li class="th myorder-sum">总价</li>
+										<li class="th myorder-status">状态</li>
+									</ul>
+								</div>
+								<div class="table-body">
+									<ul>
+										<empty name='orders'>
+											无订单
+										<else /> 
+										<volist name="orders" id="order">
+											<li class="myorder-item">
+											<div class="item-head">
+												<div class="myorder-info">
+													<time datatime="2014-05-24">{$order['ordertime']}</time>
+													<span  class="myorder-number">订单号：{$order['oid']}</span>
+												</div>
+												<div class="myorder-status">
+													<a href="#" class="dcz-icon icon-cancel"></a>
+												</div>
+											</div>
+											<div class="item-body" style="overflow-y:overlay;">
+												<div class="td myorder-info">
+													<div class="info-img">
+														<img src="__PUBLIC__/Home/images/user-avatar.jpg" alt="">
+													</div>
+													<div class="info-text">
+														<a href="<empty name="order['url']">
+											{:U('Site/detail','stid='.$order['stid'])}
+											<else />
+											 http://{$order['url']}
+											</empty>"><p>{$order['sname']}</p></a>
+														<p>预定日期:{$order['usetimes']}</p>
+														<p><a href="javascript:void(0);"><span style="color:#37af79;" onclick="alert('{$order['fsids']}');">订单详情</span></a></p>
+														<p>接收短信手机号:{$Think.session.phone}</p>
+														<notempty name="order['verify']">
+															<p>验证码:{$order['verify']}</p>
+														</notempty>
+													</div>
+												</div>
+												<div class="td myorder-count">1</div>
+												<div class="td myorder-sum">{$order['price']}</div>
+												<div class="td myorder-status">
+													<switch name="order['status']">    
+														<case value="0"><a href="{:U('Pay/alipay','oid='.$order['oid'])}" class="dcz-btn btn-primary btn-sm">立即付款</a></case>    
+														<case value="-1"><a href="#" class="dcz-btn btn-primary btn-sm">已过期</a></case>  
+														<case value="1"><a href="#" class="dcz-btn btn-primary btn-sm">已支付</a></case>   
+														<case value="2"><a href="#" class="dcz-btn btn-primary btn-sm">已使用</a></case>
+														<default /><a href="#" class="dcz-btn btn-primary btn-sm">混沌状态</a>
+													</switch>
+													<a href="#" class="dcz-btn" onclick="alert('尚未开放')">取消订单</a>
+												</div>
+											</div>
+										</li>
+										</volist>
+										</empty>
+									</ul>
+								</div>
+							</div>
+
+						<empty name='orders'>
+
+						<else />
+							<div class="content-page">{$page}
+								<!--<ul class="page-list clearfix">
+									<li  class="page-item prev"><a href="#"  class="dcz-btn btn-empty">上一页</a></li>
+									<li class="page-item hover"><a href="#">1</a></li>
+									<li class="page-item"><a href="#">2</a></li>
+									<li class="page-item"><a href="#">3</a></li>
+									<li class="page-item"><a href="#">4</a></li>
+									<li class="page-item"><a href="#">5</a></li>
+									<li class="page-item"><a href="#">6</a></li>
+									<li class="page-item"><a href="#">7</a></li>
+									<li class="page-item"><a href="#">8</a></li>
+									<li class="page-item"><a href="#">9</a></li>
+									<li  class="page-item next"><a href="#" class="dcz-btn btn-empty">下一页</a></li>
+								</ul>-->
+							</div>
+						</empty>
+						</div>
+
+					</div> <!-- self-content end -->
+				</block>

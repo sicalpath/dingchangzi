@@ -1,0 +1,42 @@
+<extend name="Public:base3" />
+<block name="title"><title>注册成功</title></block>
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper  register-wrapper">
+			<div class="main">
+				<div class="container">
+					<section class="register-bar">
+						<div class="register-status left">
+							<i class="dcz-icon icon-success"></i>
+						</div>
+						<div class="left" style="margin-left:20px;">
+							<div class="tips-group ">
+								<div class="tips-body">
+									<div class="tips-item success-tips">
+										<p class="text success-text">恭喜您，已成功注册~<br/>现在可以订场子辣~<br / >
+											登陆账户为:{$username},您的默认密码为:{$password},建议您绑定手机.</p>
+
+										<a href="{:U('Index/index')}" class="dcz-btn btn-primary btn-md btn-fixed-width">返回首页</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="tips-group">
+								<h3 class="tips-title">建议您完善以下资料</h3>
+								<div class="tips-body">
+									<a class="tips-item success-tips" href="#">
+										<i class="dcz-icon icon-user"></i>
+										<span class="text">绑定手机</span>
+									</a>
+									<a class="tips-item success-tips" href="#">
+										<i class="dcz-icon icon-bindemail"></i>
+										<span class="text">绑定邮箱</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+</block>

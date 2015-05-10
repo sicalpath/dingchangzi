@@ -1,0 +1,94 @@
+<extend name="base" />
+<block name="content">
+					<div class="content self-content right">
+						<div  class="content-head">
+							<h3  class="title">我的钱包</h3>
+						</div>
+						<div class="content-body mywallet-body">
+							<div class="mywallet-oper">
+								<p  class="mywallet-remain left">余额：<span>￥0</span></p>
+								<a href="#" class="dcz-btn btn-warning btn-md btn-mywallet">充值</a>
+								<a href="#" class="dcz-btn btn-primary btn-md btn-mywallet">提现</a>
+							</div>
+
+							<div class="mywallet-detail">
+								<ul class="mywallet-detail-nav tab_menu">
+									<li class="item current">充值</li>
+									<li class="item">提现</li>
+								</ul>
+								<div class="mywallet-detail-container tab_box">
+									<div class="item-container">
+										<table class="mywallet-detail-table">
+											<!--<tr>
+												<th class="col-width-1">时间</th>
+												<th class="col-width-2">详情</th>
+												<th class="col-width-3">收支</th>
+												<th class="col-width-3">状态</th>
+											</tr>
+											<tr>
+												<td>2015-02-19 09:58</td>
+												<td>成功购买分钟小时好累</td>
+												<td class="minus">-290</td>
+												<td class="success">成功</td>
+											</tr>
+											<tr>
+												<td>2015-02-19 09:58</td>
+												<td>从支付宝转账290元</td>
+												<td class="plus">+290</td>
+												<td class="success">成功</td>
+											</tr>
+											<tr>
+												<td>2015-02-19 09:58</td>
+												<td>成功购买分钟小时好累</td>
+												<td class="minus">-290</td>
+												<td class="fail">失败</td>
+											</tr>
+											<tr>
+												<td>2015-02-19 09:58</td>
+												<td>从支付宝转账290元</td>
+												<td class="plus">+290</td>
+												<td class="fail">失败</td>
+											</tr>
+										</table>
+									</div>
+									<div class="item-container hide">
+										<table class="mywallet-detail-table">
+											<tr>
+												<th class="col-width-1">时间</th>
+												<th class="col-width-2">详情</th>
+												<th class="col-width-3">收支</th>
+												<th class="col-width-3">状态</th>
+											</tr>
+											<tr>
+												<td>2015-02-19 09:58</td>
+												<td>成功购买分钟小时好累</td>
+												<td class="minus">-290</td>
+												<td class="success">成功</td>
+											</tr>
+											<tr>
+												<td>2015-02-19 09:58</td>
+												<td>从支付宝转账290元</td>
+												<td class="plus">+290</td>
+												<td class="success">成功</td>
+											</tr>-->
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<script type="text/javascript">
+							$(function(){
+								$('.mywallet-detail').Tabs({
+									event:'click',
+									callback:tabcallback
+								});
+
+								function tabcallback(){
+									// alert("1") ;
+								}
+							})
+							</script>
+						</div>
+
+					</div> <!-- self-content end -->
+</block>

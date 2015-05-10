@@ -1,0 +1,76 @@
+<extend name="base" />
+<block name="content">
+					<div class="content self-content right">
+
+						<div class="content-body mywallet-body">
+
+							<div class="myaccount-set">
+								<ul class="myaccount-set-nav tab_menu">
+									<li class="item current">账户设置</li>
+									<li class="item">安全中心</li>
+								</ul>
+								<div class="myaccount-set-container tab_box">
+									<div class="item-container">
+										<form action="#" method="post" >
+											<div class="form-group">
+												<label for="nickname"  class="form-label">昵称</label>
+												<input type="text" class="form-control" id="nickname" name="nickname" value="{$userinfo['nickname']}" />
+											</div>
+											<div class="form-group">
+												<label for="truename"  class="form-label">真实姓名</label>
+												<input type="text" class="form-control" id="truename" name="realname" value="{$userinfo['realname']}" />
+											</div>
+											<div class="form-group">
+												<label  class="form-label">性别</label>
+												<input type="radio" class="form-radio" name="sex" value='1' id="sexMan" />
+												<label for="sexMan" class="sex-label">男</label>
+												<input type="radio" class="form-radio" name="sex" value='2' id="sexWoman" />
+												<label for="sexWoman"  class="sex-label">女</label>
+											</div>
+											<div class="form-group">
+												<label for="birthday"  class="form-label">出生日期</label>
+												<input type="text" class="form-control" id="birthday" name="birthday" value="{$userinfo['birthday']}" />
+											</div>
+											<div class="form-group">
+												<label for="address"  class="form-label">地址</label>
+												<input type="text" class="form-control"  id="address" name="address" value="{$userinfo['address']}" />
+											</div>
+											<div class="form-group">
+												<label for="qq"  class="form-label">QQ</label>
+												<input type="text" class="form-control"  id="qq" name="qq" value="{$userinfo['qq']}" />
+											</div>
+
+											<div class="myavatar">
+												<div class="avatar-container">
+													
+												</div>
+												<a href="#" class="dcz-btn btn-primary">
+													<i class="dcz-icon icon-upload-white"></i>
+													上传新头像
+												</a>
+											</div>
+											<div ><input class="dcz-btn" type="submit" value="提交" /></div>
+										</form>
+									</div>
+									<div class="item-container hide">
+										2
+									</div>
+								</div>
+							</div>
+
+							<script type="text/javascript">
+							$(function(){
+								$('.myaccount-set').Tabs({
+									event:'click',
+									callback:tabcallback
+								});
+
+								function tabcallback(){
+									// alert("1") ;
+								}
+							})
+							</script>
+						</div>
+
+					</div> <!-- self-content end -->
+</block>

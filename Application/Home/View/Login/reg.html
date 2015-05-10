@@ -1,0 +1,72 @@
+<extend name="base" />
+<block name="title"><title>注册</title></block>
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper  register-wrapper">
+			<div class="main">
+				<div class="container">
+					<section class="register-bar">
+						<form action="#" class="dcz-form register-form left" method="post">
+							<h3  class="form-title">注册账号</h3>
+							<div class="form-group">
+								<input type="text" class="form-control" id="phone" placeholder="输入手机号" name="phone">
+							</div>
+							<div class="form-group">
+								<a href="javascript:void(0)" class="dcz-btn btn-primary btn-md get-code left send">获取验证码</a>
+								<input type="text" class="form-control input-addon right" placeholder="输入验证码"  name="code">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="输入登录密码" name="password">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="确认登录密码" name="password">
+							</div>
+							<div class="form-group">
+								<input type="checkbox" id="notice" class="checkbox" name="checkcode">
+								<label for="notice" class="form-label">我已经阅读并接收定场子的服务协议</label>
+							</div>
+							<div class="form-group">
+								<input type="button" class="dcz-btn btn-warning btn-md" value="注册" onclick="window.location='{:U('Login/reg')}';">
+							</div>
+						</form>
+						<aside  class="register-tips left">
+							<div class="tips-group">
+								<h3 class="tips-title">已有账号</h3>
+								<div class="tips-body">
+									<a href="{:U('Login/login')}" class="dcz-btn btn-primary btn-md btn-fixed-width">立即登录</a>
+								</div>
+							</div>
+							<div class="tips-group">
+								<h3 class="tips-title">社交账号登录</h3>
+								<div class="tips-body">
+									<a href="{:U('Oauth/index?type=sina')}"  class="tips-item">
+										<i class="dcz-icon icon-weibo"></i>
+										<span class="text">新浪微博</span>
+									</a>
+									<a href="{:U('Oauth/index?type=qq')}"  class="tips-item">
+										<i class="dcz-icon icon-qq"></i>
+										<span class="text">腾讯QQ</span>
+									</a>
+								</div>
+							</div>
+							<div class="tips-group">
+								<h3 class="tips-title">学号/教职工号登录</h3>
+								<div class="tips-body">
+									<a href="http://tju.dingchangzi.net/index.php/Login/eduLogin.html" class="tips-item"><i class="dcz-icon icon-user"></i></a>
+								</div>
+							</div>
+						</aside>
+					</section>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		      $(function(){
+		      $(".send").click(function(){
+		            $.post("{:U('Login/send')}",{to:$("#phone").val()},function(data,textStatus){
+		              alert(data);
+		        });
+		      })
+		      })
+		 </script>
+</block>

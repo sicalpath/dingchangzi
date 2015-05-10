@@ -1,0 +1,194 @@
+<extend name="Public:base" />
+	<block name="title"><title>网上支付</title></block>
+	<block name="files">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/style.css">
+		<!-- <script type="text/javascript" src="__PUBLIC__/Home/js/plugins/html5shiv.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/selectivizr-min.js"></script> -->
+		<!-- 以上两个js文件是用于支持 IE低版本浏览器html5元素以及css3选择器的，单貌似不生效 请后期有条件时测试 -->
+		<script type="text/javascript" src="__PUBLIC__/Home/js/libs/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/jquery.tabs.min.js"></script>
+		<script type="text/javascript"  src="__PUBLIC__/Home/js/showInfo.js"></script>
+	</block>
+
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper pay-wrapper">
+			<div class="main">
+				<!-- 订单步骤导航 -->
+				<section  class="bread-nav clearfix">
+					<ul>
+						<li class="nav-item">
+							<span class="step-number">1</span>
+							<span class="step-text">选择场馆</span>
+						</li>
+						<li class="nav-item">
+							<span class="step-number">2</span>
+							<span class="step-text">选择场次</span>
+						</li>
+						<li class="nav-item step-on">
+							<span class="step-number">3</span>
+							<span class="step-text">确认支付</span>
+						</li>
+						<li class="nav-item">
+							<span class="step-number">4</span>
+							<span class="step-text last-text">预定成功</span>
+						</li>
+					</ul>
+				</section>
+				
+				<!-- 订单信息 -->
+				<section class="order-info">
+					<div class="info-title clearfix">
+						<i class="dcz-icon icon-shalou left"></i>
+						<p class="text left">请在15分钟内完成付款，超时系统将自动释放已选场次，在支付过程中如遇到问题请致电：4000-406-506<br/>剩余支付时间<time  class="remain-time">13分48秒</time></p>
+					</div>
+					<div class="info-body clearfix">
+						<div class="info-body-lt left clearfix">
+							<dl  class="info-item">
+								<dt>订单号:</dt>
+								<dd>8689234830</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>预定场地:</dt>
+								<dd>羽毛球1号场地</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>预定日期:</dt>
+								<dd>2月1日（周日）8:00-9:00</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>接收短信手机:</dt>
+								<dd>15116983681</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>应付金额:</dt>
+								<dd>￥120</dd>
+							</dl>
+						</div>
+						<div class="info-body-rt left clearfix">
+							<dl  class="info-item">
+								<dt>预定场馆:</dt>
+								<dd>月傅大学篮球馆</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>详细地址:</dt>
+								<dd>海淀区土城路十号</dd>
+							</dl>
+							<dl  class="info-item">
+								<dt>公交信息:</dt>
+								<dd>688 456 342 223 344 244</dd>
+							</dl>
+						</div>
+					</div>
+				</section>
+
+				<!-- 支付方式 -->
+				<section  class="pay">
+					<div   class="pay-method">
+						<ul  id="payStyleNav" class="pay-method-nav tab_menu clearfix">
+							<li class="item current">网上支付</li>
+							<li class="item">信用卡支付</li>
+							<li class="item">扫码支付</li>
+						</ul>
+						<div class="pay-method-container tab_box">
+							<div class="item-container">
+								<h3 class="title">选择支付方式1</h3>
+								<div class="method-group">
+									<h4 class="group-title">快捷支付</h4>
+									<ul class="group-content">
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-11">
+											<label for="bank-11"><i class="dcz-icon icon-bank-11"></i></label>
+											<p class="text">（该服务由银联在线支付提供，支持各大银行；支付信息经过加密保护，保障资金安全）</p>
+										</li>
+									</ul>
+								</div>
+								<div class="method-group">
+									<p class="group-tips tips-bbk">满50减10元，每天早上10:00起，先到先得</p>
+									<h4 class="group-title">快捷支付</h4>
+									<ul class="group-content">
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-1">
+											<label for="bank-1"><i class="dcz-icon icon-bank-1"></i></label>
+											<p class="text"></p>
+										</li>
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-2">
+											<label for="bank-2"><i class="dcz-icon icon-bank-2"></i></label>
+											<p class="text"></p>
+										</li>
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-3">
+											<label for="bank-3"><i class="dcz-icon icon-bank-3"></i></label>
+											<p class="text"></p>
+										</li>
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-4">
+											<label for="bank-4"><i class="dcz-icon icon-bank-4"></i></label>
+											<p class="text"></p>
+										</li>
+									</ul>
+								</div>
+								<div class="method-group">
+									<h4 class="group-title">支付平台支付</h4>
+									<ul class="group-content">
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-5">
+											<label for="bank-5"><i class="dcz-icon icon-bank-5"></i></label>
+											<p class="text"></p>
+										</li>
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-6">
+											<label for="bank-6"><i class="dcz-icon icon-bank-6"></i></label>
+											<p class="text"></p>
+										</li>
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-8">
+											<label for="bank-8"><i class="dcz-icon icon-bank-8"></i></label>
+											<p class="text"></p>
+										</li>
+										<li class="item">
+											<input type="radio" name="payMethod" class="radio" id="bank-7">
+											<label for="bank-7"><i class="dcz-icon icon-bank-7"></i></label>
+											<p class="text"></p>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="item-container hide">
+								<h3 class="title">选择支付方式2</h3>
+							</div>
+							<div class="item-container hide">
+								<h3 class="title">选择支付方式3</h3>
+							</div>
+						</div>
+					</div>
+					<div class="pay-sure">
+						<form action="{:U('Pay/success')}">
+							<div class="form-group">
+								<input type="checkbox" id="services">
+								<label for="services">服务条款</label>
+								<p  class="notice">（请仔细核对预定信息，本次预定的服务一旦成功，将不予退换）</p>
+							</div>
+							<div class="form-group">
+								<input type="submit" class="dcz-btn btn-primary btn-lg btn-inline" value="支付订单">
+							</div>
+							
+						</form>
+					</div>
+					<script type="text/javascript">
+					$(function(){
+						$('.pay-method').Tabs({
+							event:'click',
+							callback:tabcallback
+						});
+
+						function tabcallback(){
+							alert("1") ;
+						}
+					})
+					</script>
+				</section>
+			</div>
+		</div>
+</block>

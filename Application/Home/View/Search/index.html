@@ -1,0 +1,152 @@
+<extend name="Public:base2" />
+	<block name="title"><title>全部场馆</title></block>
+	<block name="files">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/style.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/datepicker.css">
+		<link rel="stylesheet" href="__PUBLIC__/Home/css/dropdownlist.css">
+		<script type="text/javascript" src="__PUBLIC__/Home/js/libs/jquery-1.11.2.min.js"></script>
+		<!-- <script type="text/javascript" src="__PUBLIC__/Home/js/plugins/html5shiv.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/selectivizr-min.js"></script> -->
+		<!-- 以上两个js文件是用于支持 IE低版本浏览器html5元素以及css3选择器的，单貌似不生效 请后期有条件时测试 -->
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/dropdownlist.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/datepicker.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/plugins-call.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/js/main-nav-md.js"></script>
+		<script type="text/javascript"  src="__PUBLIC__/Home/js/showInfo.js"></script>
+	</block>
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper">
+			<div class="main">
+				<!-- nav -->
+				<section class="main-nav main-nav-md clearfix">
+					<nav class="nav">
+						<ul  class="clearfix"  id="mainNav">
+							<li  class="nav-item nav-item-md" data-nav="0"><a href="{:U('Site/index','stype=1')}">
+								<span class="dcz-icon icon-badminton-md"></span>
+								<p class="text">羽毛球</p>
+							</a></li>
+							<li  class="nav-item nav-item-md" data-nav="1"><a href="{:U('Site/index','stype=2')}">
+								<span class="dcz-icon icon-football-md"></span>
+								<p class="text">足球</p>
+							</a></li>							
+							<li  class="nav-item nav-item-md" data-nav="2"><a href="{:U('Site/index','stype=3')}">
+								<span class="dcz-icon icon-tennis-md"></span>
+								<p class="text">网球</p>
+							</a></li>
+							<li  class="nav-item nav-item-md" data-nav="3"><a href="{:U('Site/index','stype=4')}">
+								<span class="dcz-icon icon-basketball-md"></span>
+								<p class="text">篮球</p>
+							</a></li>
+							<li  class="nav-item nav-item-md" data-nav="4"><a href="{:U('Site/index','stype=5')}">
+								<span class="dcz-icon icon-pingpang-md"></span>
+								<p class="text">乒乓球</p>
+							</a></li>
+						</ul>
+						<div class="nav-active-bar" id="navActiveBar"></div>
+					</nav>
+					<div class="filter-container clearfix">
+						<form action="#">
+							<div class="filter-group">
+								<label for="" class="filter-label">时间</label>
+								<input type="text"  class="datepicker filter-datepicker" value="" name="date">
+							</div>
+							<div class="filter-group">
+								<label for="" class="filter-label">时段</label>
+								<div class="filter-select"  id="filterSelectTime"></div>
+							</div>
+							<div class="filter-group">
+								<label for="" class="filter-label">区域</label>
+								<div class="filter-select"  id="filterSelectArea"></div>
+							</div>
+							<div class="filter-group">
+								<label for="" class="filter-label">特色</label>
+								<div class="filter-select"  id="filterSelectChar"></div>
+							</div>
+						</form>
+					</div>
+				</section>
+
+				<!-- 推荐场馆 -->
+				<section class="container">
+					<div class="content">
+						<ul class="content-list clearfix">
+							<empty name="stadiums">
+								查无此馆
+							<else />
+									<volist name="stadiums" id="stadium" >
+										<li class="content-item">
+											<article>
+												<div class="item-oper">
+													<i class="dcz-icon icon-star-empty"></i>
+												</div>
+												<a href="<empty name="stadium['url']">
+											{:U('Site/detail','stid='.$stadium['stid'])}
+											<else />
+											 http://{$stadium['url']}
+											</empty>" class="item-img"><img src="__PUBLIC__/Home/images/content-item-1.jpg" alt=""></a>
+												<div class="item-title">
+													<h3><a href="<empty name="stadium['url']">
+											{:U('Site/detail','stid='.$stadium['stid'])}
+											<else />
+											 http://{$stadium['url']}
+											</empty>">{$stadium['name']}</a></h3>
+													<span><em  class="big" style="font-size:21px;">{$stadium['totstar']/$stadium['totvoter']|substr=0,3}</em><!--<em  class="small">.3</em>--></span>
+												</div>
+												<div class="item-info">
+													<p  class="sports">
+														<i class="dcz-icon icon-basketball"></i><span>篮球</span>
+														<i class="dcz-icon icon-badminton"></i><span>羽毛球</span>
+														<i class="dcz-icon icon-pingpang"></i><span>乒乓球</span>
+														<i class="dcz-icon icon-basketball"></i><span>篮球</span>
+														<i class="dcz-icon icon-badminton"></i><span>羽毛球</span>
+														<i class="dcz-icon icon-pingpang"></i><span>乒乓球</span>
+													</p>
+													<p  class="location">
+														<i class="dcz-icon icon-location"></i>
+														<span>{$stadium['address']}</span>
+													</p>
+													<p  class="other">
+														<i class="dcz-icon icon-parking"></i><span>停车</span>
+														<i class="dcz-icon icon-cart"></i><span>购物</span>
+														<i class="dcz-icon icon-clean"></i><span>洗浴</span>
+													</p>
+												</div>
+											</article>
+										</li>
+									</volist>
+							</empty>
+						</ul>
+						<div class="content-page">{$page}
+							<!--<ul class="page-list clearfix">
+								<li  class="page-item prev"><a href="#"  class="dcz-btn btn-empty">上一页</a></li>
+								<li class="page-item"><a href="#">1</a></li>
+								<li class="page-item"><a href="#">2</a></li>
+								<li class="page-item hover"><a href="#">3</a></li>
+								<li class="page-item"><a href="#">4</a></li>
+								<li class="page-item"><a href="#">5</a></li>
+								<li class="page-item"><a href="#">6</a></li>
+								<li class="page-item"><a href="#">7</a></li>
+								<li class="page-item"><a href="#">8</a></li>
+								<li class="page-item"><a href="#">9</a></li>
+								<li  class="page-item next"><a href="#" class="dcz-btn btn-empty">下一页</a></li>
+							</ul>-->
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+
+</block>
+<block name="script">
+<script type="text/javascript">
+	$(document).ready(function(){
+		var reg = /stype\/(.*?).html$/;
+		var str = document.URL;
+		reg.test(str);
+		var stype = parseInt(RegExp.$1)-1;
+		$('.nav-item.nav-item-md:eq('+stype+')').click()
+	});
+</script>
+</block>

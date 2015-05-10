@@ -1,0 +1,49 @@
+<extend name="base" />
+<block name="title"><title>修改密码</title></block>
+<block name="content">
+		<!-- main -->
+		<div class="main-wrapper  register-wrapper">
+			<div class="main">
+				<div class="container">
+					<section class="login-bar">
+						<div class="dcz-form login-form">
+							<div class="user-avatar">
+								<img src="__PUBLIC__/Home/images/user-avatar.jpg">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="输入旧密码" name="password" id="password" />
+							</div>
+							<!--<div class="form-group">
+								<input type="text" class="form-control input-addon left" placeholder="输入验证码" name="verify" id="verify" />
+								<img src="__PUBLIC__/Home/icons/check-code.png" alt="" class="check-code">
+							</div>-->
+							<div class="padding10"></div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="输入新密码" name="newPassword" id="password" />
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="确认新密码" name="password" id="reNewPassword" />
+							</div>
+							<div class="padding40"></div>
+							<div class="form-group">
+								<input type="button" class="dcz-btn btn-primary btn-md" value="确定" onclick="window.location='{:U('Login/reg')}';">
+							</div>
+							<div class="padding10"></div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+		 <script>
+
+			$(document).ready(function(){
+				$(".login-form").keydown(function(e)
+					{
+						var curKey = e.which;
+						if(curKey == 13){
+							login('{$Think.server.HTTP_REFERER}');
+						}
+					});
+			});
+</script>
+</block>

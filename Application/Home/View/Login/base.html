@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<block name="title"></block>
+	<link rel="stylesheet" href="__PUBLIC__/Home/css/style.css">
+	<!-- <script type="text/javascript" src="__PUBLIC__/Home/js/plugins/html5shiv.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/plugins/selectivizr-min.js"></script> -->
+	<!-- 以上两个js文件是用于支持 IE低版本浏览器html5元素以及css3选择器的，单貌似不生效 请后期有条件时测试 -->
+	<script type="text/javascript" src="__PUBLIC__/Home/js/libs/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/Home/login.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<!-- header -->
+		<div class="header-wrapper opacity">
+			<header class="header">
+				<div class="header-brand">
+					<a href="{:U('Index/index')}" class="logo"></a>
+				</div>
+				<div class="header-nav">
+					<div class="user-oper">
+						<if condition="$Think.session.is_login eq 1">
+							<div class="user-avatar">
+								<img src="__PUBLIC__/Home/images/user-avatar.jpg" alt="">
+							</div>
+							<div class="user-info">
+								<div class="user-name" id="userName">
+									{$Think.session.phone}
+									<span class="slide-down"></span>
+								</div>
+								<ul class="info-list"  id="userInfoList">
+									<li class="item"><a href="{:U('User/orders')}">我的中心</a></li>
+									<li class="item"><a href="{:U('Login/logoff')}">注销</a></li>
+								</ul>
+							</div>
+						<else />
+							<a href="{:U('Login/login')}" class="user-oper-item login">登录</a>
+							<a href="{:U('Login/reg')}" class="user-oper-item register">注册</a> 
+						</if>
+					</div>
+					<div class="search-oper">
+						<form action="{:U('Search/index')}" class="search-form" method="post" enctype="application/x-www-form-urlencoded">
+							<input type="text" class="input" name="keywords" />
+							<input type="submit" class="search" value="Search" />
+						</form>
+					</div>
+				</div>
+			</header>
+		</div>
+		<block name="content"></block>
+		<!-- footer -->
+		<div class="footer-wrapper">
+			<footer class="footer">
+				<p class="info-item site-info">
+					<a href="#" class="item email">499038099@qq.com</a>
+					<a href="#" class="item mobile">151-1698-3618</a>
+					<a href="#" class="item iphone">iPhone版下载</a>
+					<a href="#"	class="item android">安卓版下载</a>
+				</p>
+				<p class="info-item comp-info">
+					<a href="#">关于我们</a>
+					<a href="#">联系我们</a>
+					<a href="#">加入我们</a>
+				</p>
+			</footer>
+			<div class="copy-right">
+				<p><a href="http://www.miitbeian.gov.cn/">主题备案号：津ICP备15001959号-1 网站备案号：津ICP备15001959号-1</a></p>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

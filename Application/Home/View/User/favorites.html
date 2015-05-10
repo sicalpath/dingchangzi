@@ -1,0 +1,102 @@
+<extend name="base" />
+<block name="content">
+					<div class="content self-content mycollect-content right">
+						<div  class="content-head">
+							<h3  class="title">我的收藏</h3>
+						</div>
+						<div class="content-body mycollect-body">
+							<div class="myorder-table">
+								<div class="table-body">
+									<ul>
+											<empty name='favorites'>
+													尚无收藏
+											<else /> 
+												<volist name="favorites" id="favorite">
+													<li class="mycollect-item">
+														<div class="mycollect-img">
+															<a href="<empty name="stadium['url']">
+											{:U('Site/detail','stid='.$stadium['stid'])}
+											<else />
+											 http://{$stadium['url']}
+											</empty>"><img src="__PUBLIC__/Home/images/content-item-1.jpg" alt=""></a>
+														</div>
+														<div class="mycollect-info">
+													<div class="venues-info-item clearfix">
+														<a href="<empty name="stadium['url']">
+											{:U('Site/detail','stid='.$stadium['stid'])}
+											<else />
+											 http://{$stadium['url']}
+											</empty>"><h3 class="venues-name left">{$favorite['name']}</h3></a>
+														<div class="venues-stars left">
+															<i class="dcz-icon icon-star-full"></i>
+															<i class="dcz-icon icon-star-full"></i>
+															<i class="dcz-icon icon-star-full"></i>
+															<i class="dcz-icon icon-star-full"></i>
+															<i class="dcz-icon icon-star-empty"></i>
+															<span><em class="big">{$favorite['totstar']/$favorite['totvoter']|substr=0,3}</em><!--<em class="small">.0</em>--></span>
+														</div>
+														<div class="mycollect-oper">
+															<a href="#" class="dcz-icon icon-cancel "></a>
+														</div>
+													</div>
+													<div class="venues-info-item  clearfix">
+														<div class="venues-more venues-location left">
+															<i class="dcz-icon icon-location"></i>
+															<span class="text">{$favorite['address']}</span>
+														</div>
+														<div class="venues-more venuse-bus left">
+															<i class="dcz-icon icon-bus"></i>
+															<span class="text">{$favorite['address2']}</span>
+														</div>
+													</div>
+													<div class="venues-info-item  clearfix">
+														<div class="venues-more venues-sports left">
+															<!--<i class="dcz-icon icon-basketball"></i>
+															<span class="text">篮球</span>
+															<i class="dcz-icon icon-badminton"></i>
+															<span class="text">羽毛球</span>
+															<i class="dcz-icon icon-pingpang"></i>
+															<span class="text">乒乓球</span>-->
+														</div>
+														<div class="venues-more venues-other left">
+															<i class="dcz-icon icon-parking"></i>
+															<span class="text">停车</span>
+															<i class="dcz-icon icon-cart"></i>
+															<span class="text">购物</span>
+															<i class="dcz-icon icon-clean"></i>
+															<span class="text">洗浴</span>
+														</div>
+													</div>
+
+											</div>	
+										</li>
+										</volist>
+									</empty>
+									</ul>
+								</div>
+							</div>
+
+
+							<empty name='favorites'>
+
+							<else />
+								<div class="content-page">{$page}
+								<!--<ul class="page-list clearfix">
+									<li  class="page-item prev"><a href="#"  class="dcz-btn btn-empty">上一页</a></li>
+									<li class="page-item hover"><a href="#">1</a></li>
+									<li class="page-item"><a href="#">2</a></li>
+									<li class="page-item"><a href="#">3</a></li>
+									<li class="page-item"><a href="#">4</a></li>
+									<li class="page-item"><a href="#">5</a></li>
+									<li class="page-item"><a href="#">6</a></li>
+									<li class="page-item"><a href="#">7</a></li>
+									<li class="page-item"><a href="#">8</a></li>
+									<li class="page-item"><a href="#">9</a></li>
+									<li  class="page-item next"><a href="#" class="dcz-btn btn-empty">下一页</a></li>
+								</ul>-->
+								</div>
+							</empty>
+						</div>
+
+					</div> <!-- self-content end -->
+</block>
